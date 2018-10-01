@@ -293,4 +293,14 @@ public class Sudoku extends LatinSquare {
 		}
 		
 	}
+	
+	public void PrintPuzzle() {
+		for (int[] row : this.getPuzzle()) {
+			System.out.println("");
+			for (int element : row) {
+				System.out.printf("% 2d", element);
+			}
+		}
+	}
+	
 }

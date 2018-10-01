@@ -252,5 +252,16 @@ public class SudokuTest {
 		assertTrue(testBoolean);
 		
 	}
+	
+	@Test
+	public void PrintPuzzle_Test1() {
+		
+		int[][] puzzle = {{1, 2, 3, 4}, {3, 4, 1, 2}, {2, 1, 4, 3}, {4, 3, 2, 1}};
+		
+		try {
+			Sudoku s1 = new Sudoku(puzzle);
+			assertEqual(s1.PrintPuzzle(););
+		}
+	}
 
 }
