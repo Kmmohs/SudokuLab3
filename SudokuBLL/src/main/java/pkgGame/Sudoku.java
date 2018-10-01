@@ -1,5 +1,7 @@
 package pkgGame;
 
+import java.util.List;
+
 import pkgHelper.LatinSquare;
 
 /**
@@ -248,5 +250,47 @@ public class Sudoku extends LatinSquare {
 	 */
 	public boolean isValidValue(int iCol, int iRow, int iValue) {
 		return false;
+	}
+	
+	private List<Integer> shuffleArray(int[] ar) {
+		
+		List<Integer> list = new ArrayList<>;
+		
+		for (i : ar)
+			list.add(i);
+		
+		Collections.shuffle(list);
+		
+		return list;
+		
+	}
+
+	
+	public void SetRegion(int para1) {
+		/* Fill values filling up the region for number 
+		 * of spots in the region
+		 */
+		
+		int ivalue=1;
+		for (int i=(para1/iSqrtSize)*iSqrtSize;i<((para1/iSqrtSize)*iSqrtSize)+iSqrtSize;i++) {
+			for (int j=(para1%iSqrtSize)*iSqrtSize;j<((para1%iSqrtSize)*iSqrtSize)+iSqrtSize;j++) {
+				this.getPuzzle[i][j]=ivalue++;
+			}
+		}
+		
+	}
+	
+	public void ShuffleRegion(int para1) {
+		
+		int [] region=getRegion(para1);
+		shuffleArray(region);
+		
+		int value=0;
+		for (int i=(para1/iSqrtSize)*iSqrtSize;i<((para1/iSqrtSize)*iSqrtSize)+iSqrtSize;i++) {
+			for (int j=(para1%iSqrtSize)*iSqrtSize;j<((para1%iSqrtSize)*iSqrtSize)+iSqrtSize;j++) {
+				this.getPuzzle[i][j]=region(value++);
+			}
+		}
+		
 	}
 }
