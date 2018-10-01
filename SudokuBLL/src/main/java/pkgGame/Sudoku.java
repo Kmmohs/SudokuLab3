@@ -266,7 +266,7 @@ public class Sudoku extends LatinSquare {
 	}
 
 	
-	public void SetRegion(int para1) {
+	private void SetRegion(int para1) {
 		/* Fill values filling up the region for number 
 		 * of spots in the region
 		 */
@@ -280,7 +280,7 @@ public class Sudoku extends LatinSquare {
 		
 	}
 	
-	public void ShuffleRegion(int para1) {
+	private void ShuffleRegion(int para1) {
 		
 		int [] region=getRegion(para1);
 		shuffleArray(region);

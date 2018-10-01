@@ -230,5 +230,27 @@ public class SudokuTest {
 		}
 		
 	}	
+	
+	public void setRegion_Test() {
+		
+		int[][] puzzle = {
+				{ 0, 0, 0, 0 },
+				{ 0, 0, 0, 0 },
+				{ 1, 2, 3, 4 },
+				{ 0, 0, 0, 0 },
+				};
+		assertEquals(setRegion(2),puzzle);
+		
+	}
+	public void shuffleRegion_Test() {
+		
+		boolean testBoolean;
+			if (shuffleRegion(2)!=setRegion(2)) {
+				testBoolean=true;
+			}
+		
+		assertTrue(testBoolean);
+		
+	}
 
 }
