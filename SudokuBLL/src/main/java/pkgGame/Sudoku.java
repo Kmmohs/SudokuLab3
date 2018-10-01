@@ -1,6 +1,8 @@
 package pkgGame;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 import pkgHelper.LatinSquare;
 
@@ -301,6 +303,41 @@ public class Sudoku extends LatinSquare {
 				System.out.printf("% 2d", element);
 			}
 		}
+	}
+	
+	public void fillDiagonalRegions() {
+		
+		int[][] puzzle = getPuzzle();
+		
+		Stack<Integer> stack1 = new Stack<>(), stack2 = new Stack<>();
+		
+		for (int i=1; i<10; i++) {
+			stack1.add(i); stack2.add(i);
+		}
+		
+		Collections.shuffle(stack1);
+		Collections.shuffle(stack2);
+		
+		setRDiagonal(puzzle[0], stack1);
+		setRDiagonal(puzzle[4], stack1);
+		setRDiagonal(puzzle[8], stack1);
+		
+		setLDiagonal(puzzle[2], stack2);
+		setLDiagonal(puzzle[4], stack2);
+		setLDiagonal(puzzle[6], stack2);
+		
+	}
+	
+	public void setRDiagonal(int[] region, Stack<Integer> stack) {
+		region[0] = (int) stack.pop();
+		region[4] = (int) stack.pop();
+		region[8] = (int) stack.pop();
+	}
+	
+	public void setLDiagonal(int[] region, Stack<Integer> stack) {
+		region[2] = (int) stack.pop();
+		region[4] = (int) stack.pop();
+		region[6] = (int) stack.pop();
 	}
 	
 }
