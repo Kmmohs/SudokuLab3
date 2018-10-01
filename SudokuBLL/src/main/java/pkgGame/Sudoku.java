@@ -1,5 +1,6 @@
 package pkgGame;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
@@ -254,13 +255,12 @@ public class Sudoku extends LatinSquare {
 		return false;
 	}
 	
-	private List<Integer> shuffleArray(int[] ar) {
+	private List<Integer> shuffleArray(int [] array) {
 		
-		List<Integer> list = new ArrayList<>;
-		
-		for (i : ar)
+		List<Integer> list = new ArrayList<>();
+		for (int i : array) {
 			list.add(i);
-		
+		}
 		Collections.shuffle(list);
 		
 		return list;
