@@ -280,7 +280,7 @@ public class Sudoku extends LatinSquare {
 		
 	}
 	
-	private void ShuffleRegion(int para1) {
+	private void ShuffleRegion(int para1) { 
 		
 		int [] region=getRegion(para1);
 		shuffleArray(region);
