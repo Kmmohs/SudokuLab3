@@ -316,5 +316,4 @@ public class SudokuTest {
 		}
 		return hasDuplicates;
 	}
-
 }
