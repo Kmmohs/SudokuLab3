@@ -290,7 +290,7 @@ public class Sudoku extends LatinSquare {
 		int value=0;
 		for (int i=(para1/iSqrtSize)*iSqrtSize;i<((para1/iSqrtSize)*iSqrtSize)+iSqrtSize;i++) {
 			for (int j=(para1%iSqrtSize)*iSqrtSize;j<((para1%iSqrtSize)*iSqrtSize)+iSqrtSize;j++) {
-				this.getPuzzle[i][j]=region(value++);
+				this.getPuzzle[i][j]=region[value++];
 			}
 		}
 		
