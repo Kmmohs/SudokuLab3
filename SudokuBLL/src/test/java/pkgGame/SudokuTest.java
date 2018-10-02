@@ -260,7 +260,12 @@ public class SudokuTest {
 		
 		try {
 			Sudoku s1 = new Sudoku(puzzle);
-			assertEqual(s1.PrintPuzzle(););
+			s1.PrintPuzzle();
+			//assertEqual(s1.PrintPuzzle());
+		}
+		
+		catch (Exception e) {
+			fail("Test failed to print a Sudoku");
 		}
 	}
 	
