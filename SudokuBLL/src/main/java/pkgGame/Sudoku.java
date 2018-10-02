@@ -160,21 +160,21 @@ public class Sudoku extends LatinSquare {
 
 		return reg;
 	}
-	
- 
-	
+
+
+
 	@Override
 	public boolean hasDuplicates()
 	{
 		if (super.hasDuplicates())
 			return true;
-		
+
 		for (int k = 0; k < this.getPuzzle().length; k++) {
 			if (super.hasDuplicates(getRegion(k))) {
 				return true;
 			}
 		}
-	
+
 		return false;
 	}
 
@@ -193,7 +193,7 @@ public class Sudoku extends LatinSquare {
 	public boolean isPartialSudoku() {
 
 		this.setbIgnoreZero(true);
-		
+
 		if (hasDuplicates())
 			return false;
 
@@ -216,13 +216,13 @@ public class Sudoku extends LatinSquare {
 	public boolean isSudoku() {
 
 		this.setbIgnoreZero(false);
-		
+
 		if (hasDuplicates())
 			return false;
-		
+
 		if (!super.isLatinSquare())
 			return false;
-		
+
 		for (int i = 1; i < super.getLatinSquare().length; i++) {
 
 			if (!hasAllValues(getRow(0), getRegion(i))) {
@@ -254,48 +254,48 @@ public class Sudoku extends LatinSquare {
 	public boolean isValidValue(int iCol, int iRow, int iValue) {
 		return false;
 	}
-	
+
 	private List<Integer> shuffleArray(int [] array) {
-		
+
 		List<Integer> list = new ArrayList<>();
 		for (int i : array) {
 			list.add(i);
 		}
 		Collections.shuffle(list);
-		
+
 		return list;
-		
+
 	}
 
-	
+
 	private void SetRegion(int para1) {
 		/* Fill values filling up the region for number 
 		 * of spots in the region
 		 */
-		
+
 		int ivalue=1;
 		for (int i=(para1/iSqrtSize)*iSqrtSize;i<((para1/iSqrtSize)*iSqrtSize)+iSqrtSize;i++) {
 			for (int j=(para1%iSqrtSize)*iSqrtSize;j<((para1%iSqrtSize)*iSqrtSize)+iSqrtSize;j++) {
 				this.getPuzzle[i][j]=ivalue++;
 			}
 		}
-		
+
 	}
-	
+
 	private void ShuffleRegion(int para1) { 
-		
+
 		int [] region=getRegion(para1);
 		shuffleArray(region);
-		
+
 		int value=0;
 		for (int i=(para1/iSqrtSize)*iSqrtSize;i<((para1/iSqrtSize)*iSqrtSize)+iSqrtSize;i++) {
 			for (int j=(para1%iSqrtSize)*iSqrtSize;j<((para1%iSqrtSize)*iSqrtSize)+iSqrtSize;j++) {
 				this.getPuzzle[i][j]=region[value++];
 			}
 		}
-		
+
 	}
-	
+
 	public void PrintPuzzle() {
 		for (int[] row : this.getPuzzle()) {
 			System.out.println("");
@@ -304,40 +304,46 @@ public class Sudoku extends LatinSquare {
 			}
 		}
 	}
-	
+
 	public void fillDiagonalRegions() {
-		
+
 		int[][] puzzle = getPuzzle();
-		
+
 		Stack<Integer> stack1 = new Stack<>(), stack2 = new Stack<>();
-		
+
 		for (int i=1; i<10; i++) {
 			stack1.add(i); stack2.add(i);
 		}
-		
+
 		Collections.shuffle(stack1);
 		Collections.shuffle(stack2);
-		
+
 		setRDiagonal(puzzle[0], stack1);
 		setRDiagonal(puzzle[4], stack1);
 		setRDiagonal(puzzle[8], stack1);
-		
+
 		setLDiagonal(puzzle[2], stack2);
 		setLDiagonal(puzzle[4], stack2);
 		setLDiagonal(puzzle[6], stack2);
-		
+
 	}
-	
+
 	public void setRDiagonal(int[] region, Stack<Integer> stack) {
 		region[0] = (int) stack.pop();
 		region[4] = (int) stack.pop();
 		region[8] = (int) stack.pop();
 	}
-	
+
 	public void setLDiagonal(int[] region, Stack<Integer> stack) {
 		region[2] = (int) stack.pop();
 		region[4] = (int) stack.pop();
 		region[6] = (int) stack.pop();
 	}
-	
+
+	public int getRegionNbr(int iCol, int iRow) {
+
+		int j =(iCol / iSqrtSize) + ((iRow / iSqrtSize) * iSqrtSize);
+
+		return j;
+	}
 }

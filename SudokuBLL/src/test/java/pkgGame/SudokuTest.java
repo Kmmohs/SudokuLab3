@@ -263,5 +263,25 @@ public class SudokuTest {
 			assertEqual(s1.PrintPuzzle(););
 		}
 	}
-
+	
+	@Test
+	public void getRegionNbr_Test1() throws Exception {
+		
+		int[][] puzzle = {{1, 2, 3, 4}, {3, 4, 1, 2}, {2, 1, 4, 3}, {4, 3, 2, 1}};
+		int ExpectedRegion = 2;
+		
+		//
+		// 1 2 3 4 
+		// 3 4 1 2 
+		// 2 1 4 3
+		// 4 3 2 1
+		//
+		// region at 0,0 = region 0
+		int iCol = 1;
+		int iRow = 3;
+		
+		Sudoku s1 = new Sudoku(puzzle);
+		assertTrue(s1.getRegionNbr(iCol, iRow) == ExpectedRegion);
+	}
+	
 }
