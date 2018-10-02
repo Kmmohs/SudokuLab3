@@ -284,4 +284,32 @@ public class SudokuTest {
 		assertTrue(s1.getRegionNbr(iCol, iRow) == ExpectedRegion);
 	}
 	
+@Test
+	public void fillDiagonalRegion() throws Exception{
+		Sudoku aSudoku = new Sudoku(9);
+		aSudoku.fillDiagonalRegions();
+		int [][] puzz = aSudoku.getPuzzle();
+		int[] diagonal1 = {puzz[0][0], puzz[0][4], puzz[0][8], puzz[4][0], puzz[4][4], puzz[4][8], puzz[8][0], puzz[8][4], puzz[8][8]};
+		int[] diagonal2 = {puzz[2][0], puzz[2][4], puzz[2][6], puzz[4][2], puzz[4][4], puzz[4][6], puzz[6][2], puzz[6][4], puzz[6][6]};
+
+		assertTrue(!hasDuplicates(diagonal1) && !hasDuplicates(diagonal2));
+	}
+	
+	@Test
+	public boolean hasDuplicates(int[] arr) {
+
+		boolean hasDuplicates = false;
+		int[] sortedArray = Arrays.copyOf(arr, arr.length);
+
+		Arrays.sort(sortedArray);
+
+		for (int i = 0; i < sortedArray.length - 1; i++) {
+			if (sortedArray[i] == sortedArray[i + 1]) {
+				hasDuplicates = true;
+				break;
+			}
+		}
+		return hasDuplicates;
+	}
+
 }
