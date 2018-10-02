@@ -255,15 +255,15 @@ public class Sudoku extends LatinSquare {
 		return false;
 	}
 
-	private List<Integer> shuffleArray(int [] array) {
+	private void shuffleArray(int [] arr) {
 
 		List<Integer> list = new ArrayList<>();
-		for (int i : array) {
+		for (int i : arr) {
 			list.add(i);
 		}
 		Collections.shuffle(list);
 
-		return list;
+		
 
 	}
 
